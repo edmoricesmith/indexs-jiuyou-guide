@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B体育 · 快速识别网站用途</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e1e2a;
+            background-color: #f6f7fa;
+        }
+
+        /* Hero — 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0f111e 0%, #1d2133 100%);
+            color: #eaeef5;
+            padding: 4rem 1.5rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 40%, rgba(80, 130, 255, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: #87baff;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0.5rem auto 1.8rem;
+            color: #bcc5db;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #bdc9e3;
+        }
+
+        /* 通用容器 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* 优势区 —— 浅色卡片 */
+        .strengths {
+            padding: 3.5rem 0 2rem;
+            background: #f6f7fa;
+        }
+
+        .strengths h2 {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: #1a1d2b;
+            margin-bottom: 2.2rem;
+        }
+
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .strength-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s ease;
+            border: 1px solid #eef0f5;
+        }
+
+        .strength-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 20, 60, 0.06);
+            border-color: #d0d8e8;
+        }
+
+        .strength-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.7rem;
+            display: block;
+        }
+
+        .strength-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #141824;
+        }
+
+        .strength-card p {
+            color: #4b506a;
+            font-size: 0.95rem;
+        }
+
+        /* 说明区 */
+        .explain {
+            padding: 3rem 0 2.5rem;
+            background: #fff;
+        }
+
+        .explain-block {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 2.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .explain-text {
+            flex: 2;
+            min-width: 280px;
+        }
+
+        .explain-text h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #10131f;
+            margin-bottom: 1rem;
+        }
+
+        .explain-text p {
+            margin-bottom: 1rem;
+            color: #2f3345;
+        }
+
+        .explain-note {
+            flex: 1;
+            min-width: 200px;
+            background: #f2f4fa;
+            border-radius: 20px;
+            padding: 1.6rem 1.4rem;
+            border-left: 4px solid #3e6aff;
+        }
+
+        .explain-note p {
+            font-size: 0.95rem;
+            color: #1f233a;
+            margin-bottom: 0.3rem;
+        }
+
+        .explain-note strong {
+            color: #1b2b6b;
+        }
+
+        /* FAQ 摘要 浅色+强调色链接 */
+        .faq-summary {
+            padding: 3rem 0 2rem;
+            background: #f6f7fa;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #1a1e2f;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.1rem 1.5rem;
+            margin-bottom: 0.9rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e6e9f0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #0e1320;
+        }
+
+        .faq-item p {
+            color: #3f445b;
+            font-size: 0.95rem;
+        }
+
+        .faq-item a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #1d4ed8;
+        }
+
+        .faq-item a:hover {
+            color: #0b2f8a;
+            border-bottom-style: solid;
+        }
+
+        /* 底部链接 */
+        .bottom-links {
+            padding: 2.2rem 0 3rem;
+            background: #fff;
+            border-top: 1px solid #e2e6ef;
+            text-align: center;
+        }
+
+        .bottom-links p {
+            color: #2f344a;
+            margin-bottom: 0.5rem;
+            font-size: 0.98rem;
+        }
+
+        .bottom-links a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .bottom-links a:hover {
+            text-decoration: underline;
+        }
+
+        .bottom-links .small-note {
+            color: #6b718a;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce0ea;
+            margin: 0.5rem 0 1rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .strengths-grid {
+                grid-template-columns: 1fr;
+            }
+            .explain-block {
+                flex-direction: column;
+            }
+            .faq-item {
+                padding: 0.9rem 1.2rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero 深色 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-tagline">简洁 · 直接 · 了解用途</div>
+            <h1>你想快速识别 <span>B体育</span> 是什么？</h1>
+            <p>这是一个轻量的信息页面，帮助你在一分钟内理解网站定位、核心功能与适用场景。没有复杂术语，只有清晰梳理。</p>
+        </div>
+    </section>
+
+    <!-- 优势区 -->
+    <section class="strengths">
+        <div class="container">
+            <h2>为什么你值得花两分钟了解这里</h2>
+            <div class="strengths-grid">
+                <div class="strength-card">
+                    <span class="icon">🧭</span>
+                    <h3>目标明确</h3>
+                    <p>一眼判断网站是否匹配你的需求，节省反复查看的时间。</p>
+                </div>
+                <div class="strength-card">
+                    <span class="icon">📋</span>
+                    <h3>信息结构化</h3>
+                    <p>从功能到常见疑问，按逻辑组织，不堆砌无关内容。</p>
+                </div>
+                <div class="strength-card">
+                    <span class="icon">🔗</span>
+                    <h3>直接访问</h3>
+                    <p>页面中已包含指向 <strong>B体育</strong> 的链接，你可以随时过去确认。</p>
+                </div>
+                <div class="strength-card">
+                    <span class="icon">🛡️</span>
+                    <h3>克制的语气</h3>
+                    <p>避免夸大或催促，只陈述事实和常见用途，供你自行判断。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区 + 场景 -->
+    <section class="explain">
+        <div class="container">
+            <div class="explain-block">
+                <div class="explain-text">
+                    <h2>这个网站主要做什么</h2>
+                    <p>
+                        <a href="https://index-btiyu.com" style="color:#1d4ed8; font-weight:500; text-decoration:none; border-bottom:1px dotted #1d4ed8;">B体育</a> 是一个聚焦于体育资讯与相关服务的线上平台。如果你平时关注赛事动态、运动员信息或体育文化内容，这里可能会提供一些有价值的参考。
+                    </p>
+                    <p>
+                        网站内容涵盖多种运动项目，包括但不限于足球、篮球、网球、电竞等。你可以通过分类或搜索快速找到感兴趣的主题。界面设计偏向简洁，重点突出信息本身。
+                    </p>
+                    <p>
+                        此外，平台也会整理一些赛事回顾、数据分析和专题报道，方便用户从不同角度理解体育事件。
+                    </p>
+                </div>
+                <div class="explain-note">
+                    <p><strong>💡 使用场景举例</strong></p>
+                    <p>▪ 想了解某场比赛的背景信息<br>
+                    ▪ 浏览近期的体育热点<br>
+                    ▪ 寻找某个运动员的赛季表现<br>
+                    ▪ 简单对比不同赛事的规则或赛程</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要（包含自然嵌入的链接） -->
+    <section class="faq-summary">
+        <div class="container">
+            <h2>一些你可能想问的</h2>
+
+            <div class="faq-item">
+                <strong>这个网站适合哪些人？</strong>
+                <p>对体育感兴趣的普通观众、业余爱好者，以及想快速获取体育资讯的人。如果你只是偶尔想看看比赛结果或新闻，<a href="https://index-btiyu.com">B体育</a> 的内容结构比较友好，不会太复杂。</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>内容更新频率如何？</strong>
+                <p>平台会跟随主要赛事和热点进行更新，但具体时效性建议以实际页面为准。你可以在访问 <a href="https://index-btiyu.com">B体育</a> 后直接查看最新内容板块。</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>是否需要注册才能浏览？</strong>
+                <p>大部分信息可以直接查看，部分功能或个性化服务可能需要简单注册。详情请参考网站内的指引。</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>与其他体育网站相比有什么不同？</strong>
+                <p>这里更强调“快速识别用途”——页面结构偏重信息组织，减少无关干扰。如果你喜欢干净、直奔主题的浏览体验，可以试试看 <a href="https://index-btiyu.com">B体育</a>。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部链接 -->
+    <footer class="bottom-links">
+        <div class="container">
+            <p>如果你还想进一步确认，可以直接前往 <a href="https://index-btiyu.com">B体育</a> 查看最新内容。</p>
+            <p style="margin-top:0.2rem;">本介绍页仅用于说明网站用途，不构成任何形式的推荐或保证。</p>
+            <hr>
+            <p class="small-note">© 2025 · 信息参考页 · 内容客观中立</p>
+        </div>
+    </footer>
+
+</body>
+</html>
